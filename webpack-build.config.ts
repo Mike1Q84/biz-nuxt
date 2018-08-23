@@ -1,3 +1,4 @@
+import CompressionPlugin from 'compression-webpack-plugin';
 import path from 'path';
 import { Configuration } from 'webpack';
 import webpackMerge from 'webpack-merge';
@@ -18,6 +19,10 @@ export const config: Configuration = webpackMerge(baseConfig, {
 	plugins: [
 		new UglifyJsPlugin({
 			sourceMap: true,
+		}),
+
+		new CompressionPlugin({
+			test: /\.js$/
 		}),
 	],
 });
