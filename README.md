@@ -9,3 +9,7 @@
 # Build production files
 
 `yarn build`
+
+# Test production build using Docker Compose
+
+`docker-compose up -d`
