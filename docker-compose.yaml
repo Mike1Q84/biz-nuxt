@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  biz-vue:
+    container_name: biz-vue
+    image: nginx:alpine
+    volumes:
+    - ./dist/:/usr/share/nginx/html
+    - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+    - 3000:3000
+    restart: always
