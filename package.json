@@ -9,6 +9,14 @@
 		"node": "8.x",
 		"yarn": "^1.6"
 	},
+	"scripts": {
+		"clean": "rimraf build dist",
+		"prewatch": "run-s clean",
+		"watch": "NODE_ENV=development run-p watch:server",
+		"watch:server": "webpack-dev-server --config webpack-dev.config.ts --progress --colors",
+		"prebuild": "run-s clean",
+		"build": "NODE_ENV=production webpack --config webpack-build.config.ts"
+	},
 	"devDependencies": {
 		"@types/html-webpack-plugin": "^3.2.0",
 		"@types/node": "^10.7.1",
