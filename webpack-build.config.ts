@@ -5,6 +5,8 @@ import webpackMerge from 'webpack-merge';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import { baseConfig } from './webpack.config';
 
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+
 export const config: Configuration = webpackMerge(baseConfig, {
 	mode: 'production',
 	devtool: 'source-map',
@@ -23,6 +25,21 @@ export const config: Configuration = webpackMerge(baseConfig, {
 
 		new CompressionPlugin({
 			test: /\.js$/
+		}),
+
+		new HtmlWebpackExternalsPlugin({
+			externals: [
+				{
+					module: 'vue',
+					entry: 'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js',
+					global: 'Vue',
+				},
+				{
+					module: 'vue-router',
+					entry: 'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
+					global: 'Router',
+				},
+			],
 		}),
 	],
 });
